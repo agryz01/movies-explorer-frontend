@@ -1,0 +1,44 @@
+.Navigation__link-conteiner {
+  display: flex;
+  column-gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Navigation__link {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.33;
+  color: rgba(255, 255, 255, 1);
+  text-decoration: none;
+}
+
+.Navigation__link-button {
+  background-color: rgba(61, 220, 132, 1);
+  border-radius: 3px;
+  border: none;
+  color: rgba(0, 0, 0, 1);
+  width: 76px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.Navigation__link_active {
+  font-weight: 500;
+}
+
+.Navigation__link-acaunt {
+  margin-left: 50px;
+  display: flex;
+  column-gap: 18px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Navigation__link-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  background: rgba(49, 49, 49, 1) url(../../../images/icon-main.svg) no-repeat center;
+}

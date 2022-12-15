@@ -1,0 +1,141 @@
+.about-pr {
+  padding: 110px calc(3.91% + 20px) 0;
+}
+
+.about-pr__title {
+  margin: 0;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.23;
+  letter-spacing: -0.88px;
+  padding-bottom: 23px;
+  position: relative;
+}
+
+.about-pr__title::after {
+  content: "";
+  position: absolute;
+  background-color: rgba(218, 218, 218, 1);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+}
+
+.about-pr__stages {
+  padding-top: 70px;
+  display: flex;
+}
+
+.about-pr__stages-conteiner {
+  min-width: 245px;
+  padding-right: 20px;
+}
+
+.about-pr__stages-title {
+  margin: 0;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+  padding-bottom: 26px;
+}
+
+.about-pr__stages-text {
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.43;
+  padding-bottom: 110px;
+}
+
+.about-pr__chart {
+  padding-bottom: 100px;
+  display: grid;
+  grid-template-rows: repeat(2, 36px);
+  grid-template-columns: minmax(100px, 1fr) minmax(170px, 4fr);
+  align-items: center;
+}
+
+.about-pr__chart-title {
+  margin: 0;
+  display: flex;
+  height: 36px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(48, 48, 48, 1);
+}
+
+.about-pr__chart-title_back-col_green {
+  color: rgba(0, 0, 0, 1);
+  background-color: rgba(61, 220, 132, 1);
+}
+
+.about-pr__chart-text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+  color: rgba(139, 139, 139, 1);
+  text-align: center;
+}
+
+
+@media (max-width: 800px) {
+  .about-pr {
+    padding-top: 90px;
+  }
+
+  .about-pr__text {
+    font-size: 12px;
+    line-height: 1.5;
+    padding-bottom: 93px;
+  }
+}
+
+
+@media (max-width: 620px) {
+  .about-pr {
+    padding: 70px calc(7.14% - 4.86px) 0;
+  }
+
+  .about-pr__title {
+    font-size: 18px;
+    line-height: 1.22;
+  }
+
+  .about-pr__stages {
+    padding-top: 60px;
+    display: block;
+  }
+
+  .about-pr__stages-conteiner {
+    padding-right: 0;
+  }
+
+  .about-pr__stages-title {
+    padding-bottom: 16px;
+    font-size: 18px;
+    line-height: 1.22;
+    letter-spacing: -0.72px;
+  }
+
+  .about-pr__stages-text {
+    font-size: 11px;
+    line-height: 1.46;
+    padding-bottom: 58px;
+  }
+
+  .about-pr__chart-title {
+    height: 35px;
+    font-size: 11px;
+    line-height: 1.18;
+  }
+
+  .about-pr__chart-text {
+    font-size: 11px;
+    line-height: 1.18;
+  }
+}

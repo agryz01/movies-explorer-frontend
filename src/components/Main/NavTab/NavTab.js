@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import './NavTab.css';
 
 export default function NavTab() {
@@ -12,7 +11,7 @@ export default function NavTab() {
           <a href="#techs" className="navtab__link">Технологии</a>
         </li>
         <li className="list__item">
-          <Link to={'#'} className="navtab__link">Студент</Link>
+          <a href="#student" className="navtab__link">Студент</a>
         </li>
       </ul>
     </section>

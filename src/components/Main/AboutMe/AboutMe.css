@@ -1,0 +1,133 @@
+.about-me {
+  padding: 110px calc(3.91% + 20px) 0;
+}
+
+.about-me__student {
+  padding-top: 66px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.about-me__student-conteiner {
+  max-width: 60%;
+  position: relative;
+}
+
+.about-me__student-title {
+  margin: 0;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 1.16;
+  letter-spacing: -2px;
+}
+
+.about-me__student-subtitle {
+  margin: 0;
+  padding-top: 18px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11;
+}
+
+.about-me__student-text {
+  margin: 0;
+  padding-top: 26px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.57;
+}
+
+.about-me__student-link {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+  color: rgba(255, 255, 255, 1);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.about-me__student-img {
+  width: 270px;
+  height: 327px;
+  background-image: url(../../../images/avatar.jpg);
+  background-size: cover;
+  border-radius: 10px;
+}
+
+@media (max-width: 800px) {
+  .about-me {
+    padding-top: 90px;
+  }
+
+  .about-me__student-conteiner {
+    max-width: 47%;
+  }
+
+  .about-me__student-title {
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: -1.16;
+  }
+
+  .about-me__student-subtitle {
+    font-size: 12px;
+    line-height: 1.5px;
+  }
+
+  .about-me__student-text {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .about-me__student-img {
+    width: 255px;
+    height: 307px;
+  }
+}
+
+@media (max-width: 620px) {
+  .about-me {
+    padding: 70px calc(7.14% - 4.86px) 0;
+  }
+
+  .about-me__student {
+    padding-top: 60px;
+    flex-direction: column;
+  }
+
+  .about-me__student-img {
+    order: 1;
+    margin: 0 auto;
+    align-items: center;
+    max-width: 292px;
+    width: 100%;
+    height: 352px;
+  }
+
+  .about-me__student-conteiner {
+    order: 2;
+    max-width: 100%;
+  }
+
+  .about-me__student-title {
+    padding-top: 40px;
+    font-size: 30px;
+    line-height: 1.2;
+    letter-spacing: -1.2;
+  }
+
+  .about-me__student-subtitle {
+    padding-top: 20px;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .about-me__student-text {
+    padding-top: 20px;
+    font-size: 11px;
+    line-height: 1.45;
+  }
+}

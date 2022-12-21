@@ -2,26 +2,6 @@
   padding: 110px calc(3.91% + 20px) 0;
 }
 
-.about-pr__title {
-  margin: 0;
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 1.23;
-  letter-spacing: -0.88px;
-  padding-bottom: 23px;
-  position: relative;
-}
-
-.about-pr__title::after {
-  content: "";
-  position: absolute;
-  background-color: rgba(218, 218, 218, 1);
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-}
-
 .about-pr__stages {
   padding-top: 70px;
   display: flex;
@@ -82,7 +62,6 @@
   text-align: center;
 }
 
-
 @media (max-width: 800px) {
   .about-pr {
     padding-top: 90px;
@@ -95,15 +74,9 @@
   }
 }
 
-
 @media (max-width: 620px) {
   .about-pr {
     padding: 70px calc(7.14% - 4.86px) 0;
-  }
-
-  .about-pr__title {
-    font-size: 18px;
-    line-height: 1.22;
   }
 
   .about-pr__stages {

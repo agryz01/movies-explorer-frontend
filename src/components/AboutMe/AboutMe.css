@@ -51,7 +51,7 @@
 .about-me__student-img {
   width: 270px;
   height: 327px;
-  background-image: url(../../../images/avatar.jpg);
+  background-image: url(../../images/avatar.jpg);
   background-size: cover;
   border-radius: 10px;
 }
@@ -127,7 +127,12 @@
 
   .about-me__student-text {
     padding-top: 20px;
+    padding-bottom: 40px;
     font-size: 11px;
     line-height: 1.45;
+  }
+
+  .about-me__student-link {
+    position: relative;
   }
 }

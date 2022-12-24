@@ -3,14 +3,11 @@ import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
-import Footer from '../Footer/Footer';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
-import Header from '../Header/Header';
-import Navigation from '../Navigation/Navigation';
 import NotFound from '../NotFound/NotFound';
 
 
@@ -28,30 +25,16 @@ function App() {
           <Main />
         </Route>
         <Route path={'/movies'}>
-          <Header
-          className={'header'}>
-            <Navigation
-              onBurgerMenu={handleBurgerMenuClick} />
-          </Header>
-          <Movies />
-          <Footer />
+          <Movies
+            onBurgerMenu={handleBurgerMenuClick} />
         </Route>
         <Route path={'/saved-movies'}>
-          <Header
-          className={'header'}>
-            <Navigation
-              onBurgerMenu={handleBurgerMenuClick} />
-          </Header>
-          <SavedMovies />
-          <Footer />
+          <SavedMovies
+            onBurgerMenu={handleBurgerMenuClick} />
         </Route>
         <Route path={'/profile'}>
-          <Header
-          className={'header'}>
-            <Navigation
-              onBurgerMenu={handleBurgerMenuClick} />
-          </Header>
-          <Profile />
+          <Profile
+            onBurgerMenu={handleBurgerMenuClick} />
         </Route>
         <Route path={'/signup'}>
           <Register />

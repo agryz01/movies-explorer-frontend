@@ -1,3 +1,4 @@
+import { Route } from 'react-router-dom/cjs/react-router-dom.min'
 import './MoviesCard.css'
 
 export default function MoviesCard() {
@@ -8,7 +9,12 @@ export default function MoviesCard() {
           <h2 className='movies-card__title'>«Роллинг Стоунз» в изгнании</h2>
           <h3 className='movies-card__duration'>1ч 1м</h3>
         </div>
-        <div className='movies-card__like'></div>
+        <Route path={'/movies'}>
+          <div className='movies-card__like'></div>
+        </Route>
+        <Route path={'/saved-movies'}>
+          <div className='movies-card__del'></div>
+        </Route>
       </div>
       <img src='https://api.nomoreparties.co/uploads/stones_in_exile_b2f1b8f4b7.jpeg' alt='превью к фильму «Роллинг Стоунз» в изгнании' className='movies-card__trailer-link'></img>
     </li>

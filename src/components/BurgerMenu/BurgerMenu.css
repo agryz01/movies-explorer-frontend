@@ -81,3 +81,9 @@
     width: 100%;
   }
 }
+
+@media (min-width: 800px) {
+  .burger_opened {
+    visibility: hidden;
+  }
+}

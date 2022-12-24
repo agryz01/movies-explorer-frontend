@@ -9,7 +9,7 @@ export default function BurgerMenu(props) {
   return (
     <div className={className}>
       <nav className='burger__menu'>
-        <div className='burger__close-icon' />
+        <div onClick={props.onBurgerMenu} className='burger__close-icon' />
         <div className='burger__link-conteiner'>
           <NavLink to={'/'} className='burger__link'>Главная</NavLink>
           <NavLink to={'/movies'} activeClassName='burger__link_active' className='burger__link'>Фильмы</NavLink>

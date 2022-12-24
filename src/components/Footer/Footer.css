@@ -13,6 +13,7 @@
   line-height: 1.23;
   color: rgba(139, 139, 139, 1);
   position: relative;
+  text-decoration: none;
 }
 
 .footer__title::after {

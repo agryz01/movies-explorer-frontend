@@ -1,0 +1,50 @@
+.not-found {
+  padding-top: 246px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.not-found__conteiner {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.not-found__title {
+  font-weight: 400;
+  font-size: 140px;
+  line-height: 1.21;
+  margin: 0;
+}
+
+.not-found__subtitle {
+  padding-top: 5px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.19;
+}
+
+.not-found__button {
+  max-width: max-content;
+  background-color: transparent;
+  border: none;
+  color: rgba(66, 133, 244, 1);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  margin-top: 184px;
+  cursor: pointer;
+}
+
+@media (max-width: 620px) {
+  .not-found__title {
+    font-size: 80px;
+  }
+
+  .not-found__subtitle {
+    padding-top: 10px;
+    font-size: 15px;
+    line-height: 1.25;
+  }
+}

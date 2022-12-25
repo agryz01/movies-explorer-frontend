@@ -93,6 +93,10 @@
 }
 
 @media (max-width: 620px) {
+  .form__title {
+    text-align: center;
+  }
+
   .form__subtitle {
     font-size: 12px;
     line-height: 1.25;

@@ -39,7 +39,9 @@
   .header {
     padding: 18px calc(3.57% + 2.57px);
   }
+}
 
+@media (max-width: 620px) {
   .header-form {
     justify-content: center;
   }

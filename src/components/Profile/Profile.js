@@ -6,12 +6,12 @@ import './Profile.css';
 export default function Profile(props) {
   return (
     <>
-    <Header
-      className={'header'}>
-      <Navigation
-        onBurgerMenu={props.onBurgerMenu} />
-    </Header>
-      <div className='profile'>
+      <Header
+        className={'header'}>
+        <Navigation
+          onBurgerMenu={props.onBurgerMenu} />
+      </Header>
+      <main className='profile'>
         <h1 className='profile__title'>Привет, Алексей!</h1>
         <div className='profile__conteiner underline'>
           <span className='profile__input-title'>Имя</span>
@@ -23,7 +23,7 @@ export default function Profile(props) {
         </div>
         <span className='profile__edit'>Редактировать</span>
         <Link to={'/signin'} className='profile__exit'>Выйти из аккаунта</Link>
-      </div>
+      </main>
     </>
   )
 }

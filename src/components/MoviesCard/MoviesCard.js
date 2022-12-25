@@ -10,10 +10,10 @@ export default function MoviesCard() {
           <h3 className='movies-card__duration'>1ч 1м</h3>
         </div>
         <Route path={'/movies'}>
-          <div className='movies-card__like'></div>
+          <button className='movies-card__like'></button>
         </Route>
         <Route path={'/saved-movies'}>
-          <div className='movies-card__del'></div>
+          <button className='movies-card__del'></button>
         </Route>
       </div>
       <img src='https://api.nomoreparties.co/uploads/stones_in_exile_b2f1b8f4b7.jpeg' alt='превью к фильму «Роллинг Стоунз» в изгнании' className='movies-card__trailer-link'></img>

@@ -8,6 +8,7 @@
   padding: 14px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .movies-card__title {
@@ -36,6 +37,8 @@
   width: 30px;
   height: 30px;
   cursor: pointer;
+  background-color: inherit;
+  border: none;
 }
 
 .movies-card__del {
@@ -46,8 +49,9 @@
   width: 30px;
   height: 30px;
   cursor: pointer;
+  background-color: inherit;
+  border: none;
 }
-
 
 .movies-card__like_active {
   background-image: url(../../images/save9.svg);

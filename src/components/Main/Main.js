@@ -11,9 +11,9 @@ import Footer from '../Footer/Footer';
 
 export default function Main() {
   return (
-    <main className="content">
+    <>
       <Header
-          className={'header'}>
+        className={'header'}>
         <nav className='header__link-conteiner'>
           <Link to={'/signup'} className='header__link' >Регистрация</Link>
           <Link to={'/signin'} className='header__link'>
@@ -21,13 +21,15 @@ export default function Main() {
           </Link>
         </nav>
       </Header>
-      <Promo />
-      <NavTab />
-      <AboutProject />
-      <Techs />
-      <AboutMe />
-      <Portfolio />
+      <main className="content">
+        <Promo />
+        <NavTab />
+        <AboutProject />
+        <Techs />
+        <AboutMe />
+        <Portfolio />
+      </main>
       <Footer />
-    </main>
+    </>
   )
 } 

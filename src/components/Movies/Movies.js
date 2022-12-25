@@ -14,12 +14,12 @@ export default function Movies(props) {
         <Navigation
           onBurgerMenu={props.onBurgerMenu} />
       </Header>
-      <div className='movies'>
+      <main className='movies'>
         <SearchForm />
         <FilterCheckbox />
         <MoviesCardList />
         <button className='movies-list__more'>Ещё</button>
-      </div>
+      </main>
       <Footer />
     </>
   )

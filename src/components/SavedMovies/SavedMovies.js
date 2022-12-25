@@ -7,19 +7,19 @@ import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 
 export default function SavedMovies(props) {
-return (
-  <>
-  <Header
-    className={'header'}>
-    <Navigation
-      onBurgerMenu={props.onBurgerMenu} />
-  </Header>
-  <div className='saved-movies'>
-      <SearchForm />
-      <FilterCheckbox />
-      <MoviesCardList />
-    </div>
-    <Footer />
-  </>
-)
+  return (
+    <>
+      <Header
+        className={'header'}>
+        <Navigation
+          onBurgerMenu={props.onBurgerMenu} />
+      </Header>
+      <main className='saved-movies'>
+        <SearchForm />
+        <FilterCheckbox />
+        <MoviesCardList />
+      </main>
+      <Footer />
+    </>
+  )
 }

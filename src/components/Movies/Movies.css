@@ -1,0 +1,27 @@
+.movies {
+  padding: 70px calc(7.81% - 30px) 80px;
+}
+
+.movies-list__more {
+  width: 100%;
+  height: 36px;
+  margin-top: 50px;
+  background-color: rgba(47, 47, 47, 1);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.25;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 1);
+  border: none;
+  cursor: pointer;
+}
+
+.movies-list__more:hover {
+  opacity: .8;
+}
+
+@media (max-width: 620px) {
+  .movies {
+    padding: 98px calc(4.46% - 4.29px) 80px;
+  }
+}

@@ -1,0 +1,11 @@
+.register {
+  padding: 70px calc(50% - 198px);
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+@media (max-width: 800px) {
+  .register {
+    padding: 22.65vh calc(34.82% - 81.43px);
+  }
+}

@@ -1,0 +1,12 @@
+:root {
+  background-color: rgba(32, 32, 32, 1);
+}
+
+.page {
+  background-color: rgba(32, 32, 32, 1);
+  max-width: 1280px;
+  margin: 0 auto;
+  font-family: 'Inter', 'Arial', sans-serif;
+  color: rgba(255, 255, 255, 1);
+  text-rendering: optimizeLegibility;
+}

@@ -1,0 +1,26 @@
+.title {
+  margin: 0;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.23;
+  letter-spacing: -0.88px;
+  padding-bottom: 23px;
+  position: relative;
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  background-color: rgba(218, 218, 218, 1);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+}
+
+@media (max-width: 620px) {
+  .title {
+    font-size: 18px;
+    line-height: 1.22;
+  }
+}

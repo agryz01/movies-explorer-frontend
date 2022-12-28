@@ -61,6 +61,10 @@
   gap: 18px;
 }
 
+.burger__link:hover {
+  opacity: .7;
+}
+
 .burger__link_active {
   border-bottom: 2px solid rgba(255, 255, 255, 1);
 }

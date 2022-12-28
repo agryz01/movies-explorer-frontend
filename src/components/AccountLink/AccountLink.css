@@ -9,6 +9,10 @@
   color: rgba(255, 255, 255, 1);
 }
 
+.account__link:hover {
+  opacity: .7;
+}
+
 .navigation__link-icon {
   width: 30px;
   height: 30px;

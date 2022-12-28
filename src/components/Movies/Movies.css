@@ -13,6 +13,11 @@
   border-radius: 6px;
   color: rgba(255, 255, 255, 1);
   border: none;
+  cursor: pointer;
+}
+
+.movies-list__more:hover {
+  opacity: .8;
 }
 
 @media (max-width: 620px) {

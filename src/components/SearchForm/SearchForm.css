@@ -49,6 +49,11 @@
   cursor: pointer;
 }
 
+.search-form__button:hover {
+  opacity: .8;
+}
+
+
 @media (max-width: 620px) {
   .search-form {
     padding-bottom: 9px;

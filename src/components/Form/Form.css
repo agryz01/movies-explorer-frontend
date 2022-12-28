@@ -73,6 +73,10 @@
   cursor: pointer;
 }
 
+.form__button:hover {
+  opacity: .8;
+}
+
 .form__subtitle {
   padding-top: 16px;
   display: flex;
@@ -90,6 +94,10 @@
   line-height: 1.21;
   padding-left: 6px;
   color: rgba(66, 133, 244, 1);
+}
+
+.form__link:hover {
+  opacity: .7;
 }
 
 @media (max-width: 620px) {

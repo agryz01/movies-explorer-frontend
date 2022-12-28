@@ -25,6 +25,10 @@
   text-decoration: none;
 }
 
+.header__link:hover {
+  opacity: .7;
+}
+
 .header__link-button {
   background-color: rgba(61, 220, 132, 1);
   border-radius: 3px;
@@ -33,6 +37,10 @@
   width: 76px;
   height: 32px;
   cursor: pointer;
+}
+
+.header__link-button:hover {
+  opacity: .8;
 }
 
 @media (max-width: 800px) {

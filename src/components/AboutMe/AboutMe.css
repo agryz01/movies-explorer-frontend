@@ -48,6 +48,10 @@
   bottom: 0;
 }
 
+.about-me__student-link:hover {
+  opacity: .7;
+}
+
 .about-me__student-img {
   width: 270px;
   height: 327px;

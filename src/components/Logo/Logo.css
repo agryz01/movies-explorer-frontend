@@ -4,3 +4,7 @@
   width: 38px;
   height: 38px;
 }
+
+.logo:hover {
+  opacity: .7;
+}

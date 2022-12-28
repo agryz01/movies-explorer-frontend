@@ -16,6 +16,10 @@
   justify-content: space-between;
 }
 
+.navigation__link:hover {
+  opacity: .7;
+}
+
 .navigation__link_padding-right {
   padding-right: 30px;
 }
@@ -36,6 +40,10 @@
   height: 44px;
   background-image: url(../../images/burger.svg);
   display: none;
+}
+
+.navigation__burger:hover {
+  opacity: .7;
 }
 
 @media (max-width: 800px) {

@@ -20,6 +20,10 @@
   justify-content: center;
 }
 
+.navtab__link:hover {
+  opacity: .7;
+}
+
 .list {
   display: flex;
   column-gap: 10px;

@@ -41,6 +41,10 @@
   border: none;
 }
 
+.movies-card__like:hover {
+  opacity: .8;
+}
+
 .movies-card__del {
   padding-left: 28px;
   background-image: url(../../images/d9.svg);
@@ -51,6 +55,10 @@
   cursor: pointer;
   background-color: inherit;
   border: none;
+}
+
+.movies-card__del:hover {
+  opacity: .8;
 }
 
 .movies-card__like_active {

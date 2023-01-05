@@ -15,9 +15,11 @@ export default function Movies(props) {
           onBurgerMenu={props.onBurgerMenu} />
       </Header>
       <main className='movies'>
-        <SearchForm />
+        <SearchForm
+          ClickSearchButton={props.ClickSearchButton} />
         <FilterCheckbox />
-        <MoviesCardList />
+        <MoviesCardList
+        cardsMovies ={props.cardsMovies} />
         <button className='movies-list__more'>Ещё</button>
       </main>
       <Footer />

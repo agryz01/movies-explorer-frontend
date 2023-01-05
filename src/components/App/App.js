@@ -9,10 +9,24 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
+import getMoviesApi from '../../utils/MoviesApi';
 
 
 function App() {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = React.useState(false);
+  const [cardsMovies, setCardsMovies] = React.useState([]);
+
+  const handleClickSearchButton = () => {
+    getMoviesApi()
+      .then((res) => {
+        setCardsMovies(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+      })
+  }
 
   function handleBurgerMenuClick() {
     setIsBurgerMenuOpen(!isBurgerMenuOpen);
@@ -26,7 +40,9 @@ function App() {
         </Route>
         <Route path={'/movies'}>
           <Movies
-            onBurgerMenu={handleBurgerMenuClick} />
+            onBurgerMenu={handleBurgerMenuClick}
+            ClickSearchButton={handleClickSearchButton}
+            cardsMovies={cardsMovies} />
         </Route>
         <Route path={'/saved-movies'}>
           <SavedMovies

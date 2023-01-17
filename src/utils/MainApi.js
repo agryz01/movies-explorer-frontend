@@ -8,6 +8,7 @@ export default class MainApi {
   setUser(name, email, password) {
     return fetch(`${this._url}signup`, {
       method: 'POST',
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({ name, email, password })
     })
@@ -17,6 +18,7 @@ export default class MainApi {
   authUser(email, password) {
     return fetch(`${this._url}signin`, {
       method: 'POST',
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({ password, email })
     })
@@ -39,6 +41,15 @@ export default class MainApi {
   getUserInformation() {
     return fetch(`${this._url}users/me`, {
       method: 'GET',
+      credentials: 'include',
+      headers: this._headers
+    })
+      .then(res => this._response(res));
+  }
+
+  logout() {
+    return fetch(`${this._url}signout`, {
+      method: 'POST',
       credentials: 'include',
       headers: this._headers
     })

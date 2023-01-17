@@ -1,23 +1,23 @@
 import React from 'react';
 import useFormWithValidation from '../../hooks/UseForm';
 import Form from '../Form/Form';
-import Header from '../Header/Header';
+import Logo from '../Logo/Logo';
 import './Register.css';
 
 export default function Register(props) {
 
-  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation({});
+  const { values, handleChange, errors, isValid } = useFormWithValidation({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // resetForm();
     props.handleRegistering(values);
   }
-
+  
   return (
     <div className='register'>
-      <Header
-        className={'header-form'} />
+      <div className='register__logo'>
+        <Logo />
+      </div>
       <Form
         title={'Добро пожаловать!'}
         subtitle={'Уже зарегистрированы?'}
@@ -25,7 +25,7 @@ export default function Register(props) {
         toLink={'/signin'}
         link={'Войти'}
         onSubmit={handleSubmit}
-        disabled={isValid? '': 'disabled'}>
+        disabled={isValid ? '' : 'disabled'}>
         <label className='form__field'>
           <span className='form__input-name'>Имя</span>
           <input onChange={handleChange} type="text" name="name" id="name-input" value={values.name || ''} minLength={2} maxLength={30} required className='form__input' />

@@ -1,23 +1,22 @@
 import './Login.css'
 import Form from "../Form/Form";
-import Header from '../Header/Header';
 import useFormWithValidation from '../../hooks/UseForm';
+import Logo from '../Logo/Logo';
 
 
 export default function Login(props) {
 
-  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation({});
+  const { values, handleChange, errors, isValid } = useFormWithValidation({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(values, errors, isValid);
     props.handleLogin(values);
-    // resetForm();
   }
   return (
     <div className="login">
-      <Header
-        className={'header-form'} />
+      <div className='login__logo'>
+    <Logo />
+  </div>
       <Form
         title={'Рады видеть!'}
         subtitle={'Ещё не зарегистрированы?'}

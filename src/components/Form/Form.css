@@ -45,7 +45,6 @@
 }
 
 .form__error {
-  /* position: absolute; */
   left: 0;
   bottom: -2px;
   color: rgba(238, 52, 101, 1);
@@ -53,7 +52,6 @@
   font-size: 10px;
   line-height: 1.2;
   min-height: 12px;
-  /* visibility: hidden; */
 }
 
 .form__error_active {
@@ -61,7 +59,6 @@
 }
 
 .form__button {
-  /* margin-top: 69px; */
   width: 100%;
   height: 45px;
   background-color: rgba(66, 133, 244, 1);

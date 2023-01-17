@@ -1,10 +1,9 @@
-import { Link } from 'react-router-dom';
 import './Footer.css';
 
 export default function Footer() {
   return (
     <footer className="footer">
-      <Link to={'/movies'} className="footer__title">Учебный проект Яндекс.Практикум х BeatFilm.</Link>
+      <h2 className="footer__title">Учебный проект Яндекс.Практикум х BeatFilm.</h2>
       <div className='footer__conteiner'>
         <p className="footer__copyright">© {new Date().getFullYear()}</p>
         <div className='footer__link-conteiner'>

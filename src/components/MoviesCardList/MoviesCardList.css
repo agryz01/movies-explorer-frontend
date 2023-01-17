@@ -8,6 +8,15 @@
   list-style: none;
 }
 
+.movies-list__not-foind {
+  margin: 0;
+  text-align: center;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 1.21;
+  color: rgba(139, 139, 139, 1);
+}
+
 @media (max-width: 800px) {
   .movies-list {
     row-gap: 36px;
@@ -19,5 +28,10 @@
   .movies-list {
     padding-top: 40px;
     row-gap: 16px;
+  }
+
+  .movies-list__not-foind {
+    font-size: 18px;
+    line-height: 1.22;
   }
 }

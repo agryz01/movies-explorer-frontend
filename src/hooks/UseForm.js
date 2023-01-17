@@ -8,12 +8,13 @@ export default function useFormWithValidation() {
   const handleChange = (event) => {
     const { value, name, validationMessage } = event.target;
     setValues({ ...values, [name]: value });
-    setErrors({...errors, [name]: validationMessage});
+    setErrors({ ...errors, [name]: validationMessage });
     setIsValid(event.target.closest("form").checkValidity());
   };
 
   const resetForm = useCallback(
     (newValues = {}, newErrors = {}, newIsValid = false) => {
+      console.log('resetForm');
       setValues(newValues);
       setErrors(newErrors);
       setIsValid(newIsValid);

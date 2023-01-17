@@ -4,20 +4,18 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import Navigation from '../Navigation/Navigation';
 
 export default function SavedMovies(props) {
   return (
     <>
       <Header
-        className={'header'}>
-        <Navigation
-          onBurgerMenu={props.onBurgerMenu} />
-      </Header>
+        className={'header'}
+        loggedIn={props.loggedIn} />
       <main className='saved-movies'>
         <SearchForm />
         <FilterCheckbox />
-        <MoviesCardList />
+        <MoviesCardList
+        cardsMovies ={props.cardsMovies} />
       </main>
       <Footer />
     </>

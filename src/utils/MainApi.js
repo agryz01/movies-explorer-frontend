@@ -55,17 +55,57 @@ export default class MainApi {
     })
       .then(res => this._response(res));
   }
+
+  setMovie(cardMovie) {
+    return fetch(`${this._url}movies`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: this._headers,
+      body: JSON.stringify({
+        country: cardMovie.country,
+        director: cardMovie.director,
+        duration: cardMovie.duration,
+        year: cardMovie.year,
+        description: cardMovie.description,
+        image: `https://api.nomoreparties.co${cardMovie.image.url}`,
+        trailerLink: cardMovie.trailerLink,
+        thumbnail: `https://api.nomoreparties.co${cardMovie.image.formats.thumbnail.url}`,
+        movieId: cardMovie.id,
+        nameRU: cardMovie.nameRU,
+        nameEN: cardMovie.nameEN
+      })
+    })
+      .then(res => this._response(res));
+  }
+
+  deletMovie(idMovie) {
+    return fetch(`${this._url}movies/${idMovie}`, {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: this._headers
+    })
+      .then(res => this._response(res));
+  }
+
+  getMovies() {
+    return fetch(`${this._url}movies`, {
+      method: 'GET',
+      credentials: 'include',
+      headers: this._headers
+    })
+      .then(res => this._response(res));
+  }
 }
 
-export const api = new MainApi({
-  url: 'http://localhost:3000/',
-  headers: {
-    'Content-Type': 'application/json; charset=UTF-8'
-  },
-  response: res => {
-    if (res.ok) {
-      return res.json();
+  export const api = new MainApi({
+    url: 'http://localhost:3000/',
+    headers: {
+      'Content-Type': 'application/json; charset=UTF-8'
+    },
+    response: res => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
     }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  }
-})
+  })

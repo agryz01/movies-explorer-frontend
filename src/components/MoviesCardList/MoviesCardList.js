@@ -1,8 +1,17 @@
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import React from 'react';
-
 export default function MoviesCardList(props) {
+
+  const handleLike = (card) => {
+    if (props.savedMovies.find((saveMovie) => saveMovie.movieId === card.id)?._id) {
+      props.deletMovie(card);
+    } else {
+      props.addMovie(card);
+    }
+  }
+
+  React.useEffect(() => props.loadSavedMovies(), []);
 
   React.useEffect(() => {
     localStorage.setItem('foundMovies', JSON.stringify(props.cardsMovies));
@@ -15,12 +24,17 @@ export default function MoviesCardList(props) {
       ) : (
         <ul className='movies-list'>
           {
-            props.cardsMovies.slice(0, props.quantity).map((item) => (<MoviesCard
-              name={item.nameRU}
-              duration={item.duration}
-              imageUrl={item.image.url}
-              trailerLink={item.trailerLink}
-              key={item.id} />))
+            props.cardsMovies.slice(0, props.quantity).map((item) => {
+              const isSaved = props.savedMovies.some((saveMovie) => saveMovie.movieId === item.id);
+              return (
+                <MoviesCard
+                  className={isSaved ? 'movies-card__like movies-card__like_active' : 'movies-card__like'}
+                  card={item}
+                  key={item.id}
+                  handleLike={handleLike}>
+                </MoviesCard>
+              )
+            })
           }
         </ul>
       )}

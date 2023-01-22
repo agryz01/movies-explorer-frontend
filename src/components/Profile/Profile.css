@@ -49,6 +49,10 @@
   text-align: right;
 }
 
+.profile__input::placeholder {
+  color: rgba(255, 255, 255, 1);
+}
+
 .underline {
   border-bottom: 1px solid rgba(66, 66, 66, 1);
 }

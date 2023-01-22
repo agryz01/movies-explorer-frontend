@@ -14,7 +14,7 @@ import { ProtectedRoute } from '../ProtectedRoute/ProtectedRoute';
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState({});
-  const [loggedIn, setLoggedIn] = React.useState(localStorage.loggedIn? JSON.parse(localStorage.loggedIn): false);
+  const [loggedIn, setLoggedIn] = React.useState(localStorage.loggedIn ? JSON.parse(localStorage.loggedIn) : false);
   const history = useHistory();
 
   React.useEffect(() => {
@@ -92,12 +92,12 @@ function App() {
               handleUpdateUser={handleUpdateUser}
               handleExit={handleExit} />
           </ProtectedRoute>
-          <Route path={'/signup'}>
+          <ProtectedRoute loggedIn={!loggedIn} path={'/signup'}>
             <Register handleRegistering={handleRegistering} />
-          </Route>
-          <Route path={'/signin'}>
+          </ProtectedRoute>
+          <ProtectedRoute loggedIn={!loggedIn} path={'/signin'}>
             <Login handleLogin={handleLogin} />
-          </Route>
+          </ProtectedRoute>
           <Route path={'/*'}>
             <NotFound />
           </Route>

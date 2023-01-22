@@ -1,29 +1,29 @@
-import { Route } from 'react-router-dom/cjs/react-router-dom.min'
+import React from 'react';
 import './MoviesCard.css'
 
-export default function MoviesCard(props) {
+export default function MoviesCard({ card, handleLike, className }) {
+
   const duratuon = (mins) => {
     let hours = Math.trunc(mins / 60);
     let minutes = mins % 60;
     return hours + 'ч. ' + minutes + 'м.';
   }
 
+  const handleClick = () => {
+    handleLike(card);
+  }
+
   return (
     <li className='movies-card'>
       <div className='movies-card__conteiner'>
         <div className='movies-card__conteiner-title'>
-          <h2 className='movies-card__title'>{props.name}</h2>
-          <h3 className='movies-card__duration'>{duratuon(props.duration)}</h3>
+          <h2 className='movies-card__title'>{card.nameRU}</h2>
+          <h3 className='movies-card__duration'>{duratuon(card.duration)}</h3>
         </div>
-        <Route path={'/movies'}>
-          <button className='movies-card__like'></button>
-        </Route>
-        <Route path={'/saved-movies'}>
-          <button className='movies-card__del'></button>
-        </Route>
+        <button onClick={handleClick} className={className}></button>
       </div>
-      <a href={props.trailerLink}  rel="noreferrer" target="_blank">
-        <div style={{ backgroundImage: `url(https://api.nomoreparties.co${props.imageUrl})` }} className='movies-card__trailer-link' />
+      <a href={card.trailerLink} rel="noreferrer" target="_blank">
+        <div style={{ backgroundImage: `url(https://api.nomoreparties.co${card.image.url})` }} className='movies-card__trailer-link' />
       </a>
     </li>
   )

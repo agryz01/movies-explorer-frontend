@@ -12,7 +12,6 @@ export default function Main(props) {
   return (
     <>
       <Header
-        className={'header'}
         loggedIn={props.loggedIn} />
       <main className="content">
         <Promo />

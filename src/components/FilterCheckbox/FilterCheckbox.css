@@ -15,6 +15,7 @@
   border-radius: 10px;
   position: relative;
   cursor: pointer;
+  transition: .3s;
 }
 
 .filter__togle:hover {
@@ -23,6 +24,7 @@
 
 .filter__togle_active {
   background-color: rgba(43, 224, 128, 1);
+  transition: .3s;
 }
 
 .filter__togle-ring {

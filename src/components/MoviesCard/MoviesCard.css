@@ -46,6 +46,12 @@
   cursor: pointer;
   background-color: inherit;
   border: none;
+  transition: .3s;
+}
+
+.movies-card__like_active {
+  background-image: url(../../images/save9.svg);
+  transition: .3s;
 }
 
 .movies-card__like:hover {

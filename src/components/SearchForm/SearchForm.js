@@ -1,12 +1,11 @@
 import React from 'react';
-// import useFormWithValidation from '../../hooks/UseForm';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css'
 
 export default function SearchForm(props) {
 
-  const [togle, setTogle] = React.useState(localStorage.togle ? JSON.parse(localStorage.togle) : false);
-  const [searchForm, setSearchForm] = React.useState(localStorage.searchFormValue ? (localStorage.searchFormValue) : null);
+  const [togle, setTogle] = React.useState(localStorage?.togle ? JSON.parse(localStorage?.togle) : false);
+  const [searchForm, setSearchForm] = React.useState(localStorage?.searchFormValue ? (localStorage?.searchFormValue) : null);
   const [isValid, setIsValid] = React.useState(searchForm ? true : false);
 
   const handleChange = (e) => {
@@ -16,7 +15,7 @@ export default function SearchForm(props) {
 
   const handleClick = (e) => {
     e.preventDefault();
-    props.ClickSearchButton(searchForm, isValid, togle);
+    props.handleClickSearchButton(searchForm, isValid, togle);
   }
 
   const onClickTogle = () => {

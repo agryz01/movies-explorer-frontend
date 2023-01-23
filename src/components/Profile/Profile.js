@@ -9,7 +9,7 @@ export default function Profile(props) {
   const currentUser = React.useContext(CurrentUserContext);
   const { values, handleChange, errors, isValid } = useFormWithValidation({});
   const [edit, setEdit] = React.useState(false);
-  const classNameButton = edit ? (isValid ? 'profile__button profile__button_visible' : 'profile__button profile__button_visible .profile__button_disabled') : 'profile__button';
+  const classNameButton = edit ? (isValid ? 'profile__button profile__button_visible' : 'profile__button profile__button_visible profile__button_disabled') : 'profile__button';
   const classNameConteinerBottom = edit ? 'profile__conteiner-bottom' : 'profile__conteiner-bottom profile__conteiner-bottom_visible';
   const inputDisabled = edit ? '' : 'disabled';
   const buttonDisabled = isValid ? '' : 'disabled';

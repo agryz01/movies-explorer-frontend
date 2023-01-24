@@ -1,9 +1,13 @@
 .form {
   display: flex;
   flex-direction: column;
-  height: 482px;
+  height: 520px;
   box-sizing: border-box;
   justify-content: space-between;
+}
+
+.form__conteiner {
+  position: relative;
 }
 
 .form__title {
@@ -52,6 +56,18 @@
   font-size: 10px;
   line-height: 1.2;
   min-height: 12px;
+}
+
+.form__error-server {
+  position: absolute;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.18;
+  color: rgba(238, 52, 101, 1);
+  text-align: center;
+  width: 100%;
+  left: 0;
+  top: -33px;
 }
 
 .form__error_active {

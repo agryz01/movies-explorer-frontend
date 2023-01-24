@@ -1,7 +1,7 @@
 import React from 'react';
 import './MoviesCard.css'
 
-export default function MoviesCard({ card, handleLike, className }) {
+export default function MoviesCard({ card, handleLike, className, image }) {
 
   const duratuon = (mins) => {
     let hours = Math.trunc(mins / 60);
@@ -23,7 +23,7 @@ export default function MoviesCard({ card, handleLike, className }) {
         <button onClick={handleClick} className={className}></button>
       </div>
       <a href={card.trailerLink} rel="noreferrer" target="_blank">
-        <div style={{ backgroundImage: `url(https://api.nomoreparties.co${card.image.url})` }} className='movies-card__trailer-link' />
+        <div style={image} className='movies-card__trailer-link' />
       </a>
     </li>
   )

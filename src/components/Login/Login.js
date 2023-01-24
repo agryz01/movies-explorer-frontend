@@ -2,11 +2,14 @@ import './Login.css'
 import Form from "../Form/Form";
 import useFormWithValidation from '../../hooks/UseForm';
 import Logo from '../Logo/Logo';
+import React from 'react';
 
 
 export default function Login(props) {
 
   const { values, handleChange, errors, isValid } = useFormWithValidation({});
+
+  React.useEffect(() => props.setServerErrMesage(null), []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,6 +27,7 @@ export default function Login(props) {
         toLink={'/signup'}
         link={'Регистрация'}
         onSubmit={handleSubmit}
+        serverErrMesage={props.serverErrMesage}
         disabled={isValid ? '' : 'disabled'}>
         <label className='form__field'>
           <span className='form__input-name'>E-mail</span>

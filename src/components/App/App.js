@@ -19,10 +19,15 @@ function App() {
   const [loggedIn, setLoggedIn] = React.useState(localStorage?.loggedIn ? JSON.parse(localStorage?.loggedIn) : false);
   const [foundMovies, setFoundMovies] = React.useState(localStorage?.foundMovies ? JSON.parse(localStorage?.foundMovies) : []);
   const [savedMovies, setSavedMovies] = React.useState([]);
+  const [savedFoundMovies, setSavedFoundMovies] = React.useState([]);
   const [add, setAdd] = React.useState(document.documentElement.clientWidth > 981 ? 3 : 2);
   const [startQuantity, setStartQuantity] = React.useState(document.documentElement.clientWidth < 628 ? 5 : (document.documentElement.clientWidth > 981 ? 12 : 8));
   const [quantity, setQuantity] = React.useState(startQuantity);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [success, setSuccess] = React.useState(false);
+  const [errMesage, setErrMesage] = React.useState(null);
+  const [serverErrMesage, setServerErrMesage] = React.useState(null);
+  const [editProfile, setEditProfile] = React.useState(false);
   const history = useHistory();
 
   React.useEffect(() => {
@@ -41,11 +46,16 @@ function App() {
 
   const handleRegistering = ({ name, email, password }) => {
     api.setUser(name, email, password)
-      .then((res) => {
-        history.push('/signin');
+      .then(() => {
+        handleLogin({ password, email });
       })
       .catch((err) => {
         console.log(err);
+        if (err === 'Ошибка: 409') {
+          setServerErrMesage('Пользователь с таким email уже существует');
+        } else {
+          setServerErrMesage('При регистрации пользователя произошла ошибка');
+        }
       })
   }
 
@@ -57,6 +67,11 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+        if (err === 'Ошибка: 401') {
+          setServerErrMesage('Вы ввели неправильный логин или пароль');
+        } else {
+          setServerErrMesage('При авторизации произошла ошибка');
+        }
       })
   }
 
@@ -66,9 +81,15 @@ function App() {
       .then((res) => {
         setCurrentUser(res);
         console.log('данные изменены');
+        setEditProfile(!editProfile);
       })
       .catch((err) => {
         console.log(err);
+        if (err === 'Ошибка: 409') {
+          setServerErrMesage('Пользователь с таким email уже существует');
+        } else {
+          setServerErrMesage('При обновлении профиля произошла ошибка');
+        }
       })
   }
 
@@ -76,22 +97,45 @@ function App() {
     api.logout();
     setLoggedIn(false);
     localStorage.clear();
+    setCurrentUser({});
     history.push('/');
   }
 
-  const handleClickSearchButton = (searchForm, isValid, togle) => {
-    console.log(searchForm, isValid, togle);
+  const SearchButtonMovies = (searchForm, isValid, togle) => {
     if (!isValid) {
-      console.log(isValid);
-      const textMessage = 'Нужно ввести ключевое слово';
-      return textMessage;
+      setSuccess(false);
+      setErrMesage('Нужно ввести ключевое слово');
+      return;
     }
     setIsLoading(true);
+    setFoundMovies([]);
     localStorage.setItem('searchFormValue', searchForm);
     getMoviesApi()
       .then((res) => {
+        setSuccess(true);
         setFoundMovies(searshMovies(res, searchForm, togle));
         setQuantity(startQuantity);
+      })
+      .catch((err) => {
+        console.log(err);
+        setSuccess(false);
+        setServerErrMesage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
+      })
+      .finally(() => {
+        setIsLoading(false);
+      })
+  }
+
+  const SearchButtonSavedMovies = (searchForm, isValid, togle) => {
+    if (!isValid) {
+      setSuccess(false);
+      setErrMesage('Нужно ввести ключевое слово');
+      return;
+    }
+    setIsLoading(true);
+    api.getMovies()
+      .then((res) => {
+        setSavedFoundMovies(searshMovies(res, searchForm, togle));
       })
       .catch((err) => {
         console.log(err);
@@ -106,7 +150,6 @@ function App() {
   }
 
   const loadSavedMovies = () => {
-    console.log('загрузка фильмов')
     api.getMovies()
       .then((res) => {
         setSavedMovies(res);
@@ -127,10 +170,14 @@ function App() {
       .finally(() => loadSavedMovies());
   }
 
-  const deletMovie = ({_id}) => {
+  const handleDelet = (card) => {
+    deletMovie(card);
+  }
+
+  const deletMovie = ({ _id }) => {
     api.deletMovie(_id)
       .then(() => {
-        console.log('del');
+        console.log('фильм удалён');
       })
       .catch((err) => {
         console.log(err);
@@ -174,7 +221,10 @@ function App() {
           <ProtectedRoute loggedIn={loggedIn} path={'/movies'}>
             <Movies
               loggedIn={loggedIn}
-              handleClickSearchButton={handleClickSearchButton}
+              SearchButtonMovies={SearchButtonMovies}
+              success={success}
+              errMesage={errMesage}
+              serverErrMesage={serverErrMesage}
               isLoading={isLoading}
               savedMovies={savedMovies}
               loadSavedMovies={loadSavedMovies}
@@ -185,19 +235,38 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute loggedIn={loggedIn} path={'/saved-movies'}>
             <SavedMovies
-              loggedIn={loggedIn} />
+              loggedIn={loggedIn}
+              SearchButtonSavedMovies={SearchButtonSavedMovies}
+              success={success}
+              errMesage={errMesage}
+              isLoading={isLoading}
+              savedMovies={savedMovies}
+              loadSavedMovies={loadSavedMovies}
+              setSavedFoundMovies={setSavedFoundMovies}
+              savedFoundMovies={savedFoundMovies}
+              handleDelet={handleDelet} />
           </ProtectedRoute>
           <ProtectedRoute loggedIn={loggedIn} path={'/profile'}>
             <Profile
               loggedIn={loggedIn}
               handleUpdateUser={handleUpdateUser}
+              serverErrMesage={serverErrMesage}
+              setServerErrMesage={setServerErrMesage}
+              editProfile={editProfile}
+              setEditProfile={setEditProfile}
               handleExit={handleExit} />
           </ProtectedRoute>
           <ProtectedRoute loggedIn={!loggedIn} path={'/signup'}>
-            <Register handleRegistering={handleRegistering} />
+            <Register
+              handleRegistering={handleRegistering}
+              serverErrMesage={serverErrMesage}
+              setServerErrMesage={setServerErrMesage} />
           </ProtectedRoute>
           <ProtectedRoute loggedIn={!loggedIn} path={'/signin'}>
-            <Login handleLogin={handleLogin} />
+            <Login
+              handleLogin={handleLogin}
+              serverErrMesage={serverErrMesage}
+              setServerErrMesage={setServerErrMesage} />
           </ProtectedRoute>
           <Route path={'/*'}>
             <NotFound />

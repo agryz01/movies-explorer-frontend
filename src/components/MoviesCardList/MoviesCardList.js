@@ -3,15 +3,7 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 import React from 'react';
 export default function MoviesCardList(props) {
 
-  // const handleLike = (card) => {
-  //   if (props.savedMovies.find((saveMovie) => saveMovie.movieId === card.id)?._id) {
-  //     props.deletMovie(card);
-  //   } else {
-  //     props.addMovie(card);
-  //   }
-  // }
-
-  React.useEffect(() => props.loadSavedMovies(), []);
+  const mesage = props?.serverErrMesage && props?.success ? props?.serverErrMesage : 'Ничего не найдено';
 
   React.useEffect(() => {
     localStorage.setItem('foundMovies', JSON.stringify(props.foundMovies));
@@ -20,7 +12,7 @@ export default function MoviesCardList(props) {
   return (
     <>
       {(props.foundMovies.length === 0) ? (
-        <h2 className='movies-list__not-foind'>Ничего не найдено</h2>
+        <h2 className='movies-list__not-foind'>{mesage}</h2>
       ) : (
         <ul className='movies-list'>
           {
@@ -29,6 +21,7 @@ export default function MoviesCardList(props) {
               return (
                 <MoviesCard
                   className={isSaved ? 'movies-card__like movies-card__like_active' : 'movies-card__like'}
+                  image={{ backgroundImage: `url(https://api.nomoreparties.co${item.image.url})` }}
                   card={item}
                   key={item.id}
                   handleLike={props.handleLike}>

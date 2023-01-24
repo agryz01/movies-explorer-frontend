@@ -1,22 +1,41 @@
 import './SavedMovies.css';
 import SearchForm from '../SearchForm/SearchForm';
-import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
-import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import { Children } from 'react';
+import SavedMoviesCardList from '../SavedMoviesCardList/SavedMoviesCardList';
+import React from 'react';
+import Preloader from '../Preloader/Preloader';
 
-export default function SavedMovies(props) {
+export default function SavedMovies({
+  loggedIn,
+  SearchButtonSavedMovies,
+  success,
+  errMesage,
+  isLoading,
+  loadSavedMovies,
+  savedFoundMovies,
+  setSavedFoundMovies,
+  savedMovies,
+  handleDelet
+}) {
+
+  React.useEffect(() => {
+    setSavedFoundMovies(savedMovies);
+  }, [savedMovies]);
+
   return (
     <>
-    {Children}
-      <Header
-        loggedIn={props.loggedIn} />
+      <Header loggedIn={loggedIn} />
       <main className='saved-movies'>
-        <SearchForm />
-        <FilterCheckbox />
-        <MoviesCardList
-        cardsMovies ={props.cardsMovies} />
+        <SearchForm
+          SearchButton={SearchButtonSavedMovies}
+          success={success}
+          errMesage={errMesage} />
+        <Preloader isLoading={isLoading} />
+        <SavedMoviesCardList
+          loadSavedMovies={loadSavedMovies}
+          savedFoundMovies={savedFoundMovies}
+          handleDelet={handleDelet} />
       </main>
       <Footer />
     </>

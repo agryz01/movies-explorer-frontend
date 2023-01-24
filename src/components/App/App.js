@@ -40,7 +40,9 @@ function App() {
       .catch((err) => {
         console.log(err);
         setLoggedIn(false);
-        localStorage.removeItem('loggedIn');
+        if (localStorage?.loggedIn) {
+          localStorage.removeItem('loggedIn');
+        }
       })
   }, [loggedIn]);
 

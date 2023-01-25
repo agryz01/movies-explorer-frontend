@@ -10,7 +10,7 @@ export default function SavedMovies({
   loggedIn,
   SearchButtonSavedMovies,
   success,
-  errMesage,
+  errMessage,
   isLoading,
   loadSavedMovies,
   savedFoundMovies,
@@ -30,7 +30,7 @@ export default function SavedMovies({
         <SearchForm
           SearchButton={SearchButtonSavedMovies}
           success={success}
-          errMesage={errMesage} />
+          errMessage={errMessage} />
         <Preloader isLoading={isLoading} />
         <SavedMoviesCardList
           loadSavedMovies={loadSavedMovies}

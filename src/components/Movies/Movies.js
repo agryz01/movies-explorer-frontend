@@ -16,8 +16,8 @@ export default function Movies({
   foundMovies,
   handleButtonMore,
   success,
-  errMesage,
-  serverErrMesage,
+  errMessage,
+  serverErrMessage,
   handleLike
 }) {
 
@@ -33,11 +33,11 @@ export default function Movies({
         <SearchForm
           SearchButton={SearchButtonMovies}
           success={success}
-          errMesage={errMesage} />
+          errMessage={errMessage} />
         <Preloader isLoading={isLoading} />
         <section className={classNameCardsList}>
           <MoviesCardList
-            serverErrMesage={serverErrMesage}
+            serverErrMessage={serverErrMessage}
             success={success}
             savedMovies={savedMovies}
             loadSavedMovies={loadSavedMovies}

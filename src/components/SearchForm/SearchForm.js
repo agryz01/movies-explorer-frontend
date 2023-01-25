@@ -7,7 +7,7 @@ export default function SearchForm(props) {
   const [togle, setTogle] = React.useState(localStorage?.togle ? JSON.parse(localStorage?.togle) : false);
   const [searchForm, setSearchForm] = React.useState(localStorage?.searchFormValue ? (localStorage?.searchFormValue) : null);
   const [isValid, setIsValid] = React.useState(searchForm ? true : false);
-  const placeholder = props?.errMesage && !props.success ? props.errMesage : 'Фильм';
+  const placeholder = props?.errMessage && !props.success ? props.errMessage : 'Фильм';
 
   const handleChange = (e) => {
     setSearchForm(e.target.value);

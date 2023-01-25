@@ -25,8 +25,8 @@ function App() {
   const [quantity, setQuantity] = React.useState(startQuantity);
   const [isLoading, setIsLoading] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
-  const [errMesage, setErrMesage] = React.useState(null);
-  const [serverErrMesage, setServerErrMesage] = React.useState(null);
+  const [errMessage, setErrMessage] = React.useState(null);
+  const [serverErrMessage, setServerErrMessage] = React.useState(null);
   const [editProfile, setEditProfile] = React.useState(false);
   const history = useHistory();
 
@@ -50,14 +50,11 @@ function App() {
     api.setUser(name, email, password)
       .then(() => {
         handleLogin({ password, email });
+        setServerErrMessage(null);
       })
       .catch((err) => {
         console.log(err);
-        if (err === 'Ошибка: 409') {
-          setServerErrMesage('Пользователь с таким email уже существует');
-        } else {
-          setServerErrMesage('При регистрации пользователя произошла ошибка');
-        }
+        setServerErrMessage(err.message);
       })
   }
 
@@ -65,15 +62,12 @@ function App() {
     api.authUser(email, password)
       .then(() => {
         setLoggedIn(true);
+        setServerErrMessage(null);
         history.push('/movies');
       })
       .catch((err) => {
         console.log(err);
-        if (err === 'Ошибка: 401') {
-          setServerErrMesage('Вы ввели неправильный логин или пароль');
-        } else {
-          setServerErrMesage('При авторизации произошла ошибка');
-        }
+        setServerErrMessage(err.message);
       })
   }
 
@@ -84,14 +78,11 @@ function App() {
         setCurrentUser(res);
         console.log('данные изменены');
         setEditProfile(!editProfile);
+        setServerErrMessage(null);
       })
       .catch((err) => {
         console.log(err);
-        if (err === 'Ошибка: 409') {
-          setServerErrMesage('Пользователь с таким email уже существует');
-        } else {
-          setServerErrMesage('При обновлении профиля произошла ошибка');
-        }
+        setServerErrMessage(err.message);
       })
   }
 
@@ -106,7 +97,7 @@ function App() {
   const SearchButtonMovies = (searchForm, isValid, togle) => {
     if (!isValid) {
       setSuccess(false);
-      setErrMesage('Нужно ввести ключевое слово');
+      setErrMessage('Нужно ввести ключевое слово');
       return;
     }
     setIsLoading(true);
@@ -121,7 +112,7 @@ function App() {
       .catch((err) => {
         console.log(err);
         setSuccess(false);
-        setServerErrMesage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
+        setServerErrMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
       })
       .finally(() => {
         setIsLoading(false);
@@ -131,7 +122,7 @@ function App() {
   const SearchButtonSavedMovies = (searchForm, isValid, togle) => {
     if (!isValid) {
       setSuccess(false);
-      setErrMesage('Нужно ввести ключевое слово');
+      setErrMessage('Нужно ввести ключевое слово');
       return;
     }
     setIsLoading(true);
@@ -225,8 +216,8 @@ function App() {
               loggedIn={loggedIn}
               SearchButtonMovies={SearchButtonMovies}
               success={success}
-              errMesage={errMesage}
-              serverErrMesage={serverErrMesage}
+              errMessage={errMessage}
+              serverErrMessage={serverErrMessage}
               isLoading={isLoading}
               savedMovies={savedMovies}
               loadSavedMovies={loadSavedMovies}
@@ -240,7 +231,7 @@ function App() {
               loggedIn={loggedIn}
               SearchButtonSavedMovies={SearchButtonSavedMovies}
               success={success}
-              errMesage={errMesage}
+              errMessage={errMessage}
               isLoading={isLoading}
               savedMovies={savedMovies}
               loadSavedMovies={loadSavedMovies}
@@ -252,8 +243,8 @@ function App() {
             <Profile
               loggedIn={loggedIn}
               handleUpdateUser={handleUpdateUser}
-              serverErrMesage={serverErrMesage}
-              setServerErrMesage={setServerErrMesage}
+              serverErrMessage={serverErrMessage}
+              setServerErrMessage={setServerErrMessage}
               editProfile={editProfile}
               setEditProfile={setEditProfile}
               handleExit={handleExit} />
@@ -261,14 +252,14 @@ function App() {
           <ProtectedRoute loggedIn={!loggedIn} path={'/signup'}>
             <Register
               handleRegistering={handleRegistering}
-              serverErrMesage={serverErrMesage}
-              setServerErrMesage={setServerErrMesage} />
+              serverErrMessage={serverErrMessage}
+              setServerErrMessage={setServerErrMessage} />
           </ProtectedRoute>
           <ProtectedRoute loggedIn={!loggedIn} path={'/signin'}>
             <Login
               handleLogin={handleLogin}
-              serverErrMesage={serverErrMesage}
-              setServerErrMesage={setServerErrMesage} />
+              serverErrMessage={serverErrMessage}
+              setServerErrMessage={setServerErrMessage} />
           </ProtectedRoute>
           <Route path={'/*'}>
             <NotFound />

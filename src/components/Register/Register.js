@@ -7,14 +7,14 @@ import './Register.css';
 export default function Register(props) {
 
   const { values, handleChange, errors, isValid } = useFormWithValidation({});
-  
-  React.useEffect(() => props.setServerErrMesage(null), []);
+
+  React.useEffect(() => props.setServerErrMessage(null), []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     props.handleRegistering(values);
   }
-  
+
   return (
     <div className='register'>
       <div className='register__logo'>
@@ -27,7 +27,7 @@ export default function Register(props) {
         toLink={'/signin'}
         link={'Войти'}
         onSubmit={handleSubmit}
-        serverErrMesage={props.serverErrMesage}
+        serverErrMessage={props.serverErrMessage}
         disabled={isValid ? '' : 'disabled'}>
         <label className='form__field'>
           <span className='form__input-name'>Имя</span>

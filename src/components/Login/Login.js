@@ -9,17 +9,18 @@ export default function Login(props) {
 
   const { values, handleChange, errors, isValid } = useFormWithValidation({});
 
-  React.useEffect(() => props.setServerErrMesage(null), []);
+  React.useEffect(() => props.setServerErrMessage(null), []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     props.handleLogin(values);
   }
+
   return (
     <div className="login">
       <div className='login__logo'>
-    <Logo />
-  </div>
+        <Logo />
+      </div>
       <Form
         title={'Рады видеть!'}
         subtitle={'Ещё не зарегистрированы?'}
@@ -27,7 +28,7 @@ export default function Login(props) {
         toLink={'/signup'}
         link={'Регистрация'}
         onSubmit={handleSubmit}
-        serverErrMesage={props.serverErrMesage}
+        serverErrMessage={props.serverErrMessage}
         disabled={isValid ? '' : 'disabled'}>
         <label className='form__field'>
           <span className='form__input-name'>E-mail</span>

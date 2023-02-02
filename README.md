@@ -12,7 +12,7 @@
 
 ### Ссылка на дизайн:
 
-- https://cloud.mail.ru/public/agwt/5RMuBdsoF
+- https://cloud.mail.ru/public/hwYf/rMJmHwFq9
 
 ### Ссылка на pull request:
 

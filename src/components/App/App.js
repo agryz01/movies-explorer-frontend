@@ -15,8 +15,9 @@ import getMoviesApi from '../../utils/MoviesApi';
 import searshMovies from '../searshMovies/searshMovies';
 
 function App() {
-  const [currentUser, setCurrentUser] = React.useState({});
+  const [currentUser, setCurrentUser] = React.useState(localStorage?.currentUser ? JSON.parse(localStorage?.currentUser) : {});
   const [loggedIn, setLoggedIn] = React.useState(localStorage?.loggedIn ? JSON.parse(localStorage?.loggedIn) : false);
+  const [allMovies, setAllMovies] = React.useState([]);
   const [foundMovies, setFoundMovies] = React.useState(localStorage?.foundMovies ? JSON.parse(localStorage?.foundMovies) : []);
   const [savedMovies, setSavedMovies] = React.useState([]);
   const [savedFoundMovies, setSavedFoundMovies] = React.useState([]);
@@ -28,14 +29,23 @@ function App() {
   const [errMessage, setErrMessage] = React.useState(null);
   const [serverErrMessage, setServerErrMessage] = React.useState(null);
   const [editProfile, setEditProfile] = React.useState(false);
+  const [moviesTogle, setMoviesTogle] = React.useState(localStorage?.moviesTogle ? JSON.parse(localStorage?.moviesTogle) : false);
+  const [savedMoviesTogle, setSavedMoviesTogle] = React.useState(false);
+  const [searchMovies, setSearchMovies] = React.useState(localStorage?.searchMoviesValue ? (localStorage?.searchMoviesValue) : '');
+  const [searchSavedMovies, setSearchSavedMovies] = React.useState('');
   const history = useHistory();
 
   React.useEffect(() => {
-    api.getUserInformation()
-      .then((res) => {
-        setCurrentUser(res);
+    Promise.all([
+      api.getUserInformation(),
+      api.getMovies()
+    ])
+      .then(([userData, savMovies]) => {
+        setCurrentUser(userData);
+        setSavedMovies(savMovies);
         setLoggedIn(true);
         localStorage.setItem('loggedIn', JSON.stringify(loggedIn));
+        localStorage.setItem('currentUser', JSON.stringify(userData));
       })
       .catch((err) => {
         console.log(err);
@@ -78,7 +88,7 @@ function App() {
         setCurrentUser(res);
         console.log('данные изменены');
         setEditProfile(!editProfile);
-        setServerErrMessage(null);
+        setServerErrMessage('изменения успешно сохранены');
       })
       .catch((err) => {
         console.log(err);
@@ -91,6 +101,12 @@ function App() {
     setLoggedIn(false);
     localStorage.clear();
     setCurrentUser({});
+    setFoundMovies([]);
+    setSavedMovies([]);
+    setSavedFoundMovies([]);
+    setMoviesTogle(false);
+    setSearchMovies([]);
+    setAllMovies([]);
     history.push('/');
   }
 
@@ -101,22 +117,29 @@ function App() {
       return;
     }
     setIsLoading(true);
-    setFoundMovies([]);
-    localStorage.setItem('searchFormValue', searchForm);
-    getMoviesApi()
-      .then((res) => {
-        setSuccess(true);
-        setFoundMovies(searshMovies(res, searchForm, togle));
-        setQuantity(startQuantity);
-      })
-      .catch((err) => {
-        console.log(err);
-        setSuccess(false);
-        setServerErrMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
-      })
-      .finally(() => {
-        setIsLoading(false);
-      })
+    if (allMovies.length === 0) {
+      getMoviesApi()
+        .then((res) => {
+          setSuccess(true);
+          setFoundMovies(searshMovies(res, searchForm, togle));
+          setAllMovies(res);
+          setQuantity(startQuantity);
+          console.log('с запросом');
+        })
+        .catch((err) => {
+          console.log(err);
+          setSuccess(false);
+          setServerErrMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
+        })
+        .finally(() => {
+          setIsLoading(false);
+        })
+    } else {
+      console.log('без зщапроса');
+      setFoundMovies(searshMovies(allMovies, searchForm, togle));
+      setQuantity(startQuantity);
+      setIsLoading(false);
+    }
   }
 
   const SearchButtonSavedMovies = (searchForm, isValid, togle) => {
@@ -125,42 +148,21 @@ function App() {
       setErrMessage('Нужно ввести ключевое слово');
       return;
     }
-    setIsLoading(true);
-    api.getMovies()
-      .then((res) => {
-        setSavedFoundMovies(searshMovies(res, searchForm, togle));
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      })
+    setSavedFoundMovies(searshMovies(savedMovies, searchForm, togle));
   }
 
   const handleButtonMore = () => {
     setQuantity(quantity + add);
   }
 
-  const loadSavedMovies = () => {
-    api.getMovies()
-      .then((res) => {
-        setSavedMovies(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-  }
-
   const addMovie = (card) => {
     api.setMovie(card)
-      .then(() => {
-        console.log('фильм в базе');
+      .then((res) => {
+        setSavedMovies([...savedMovies, res])
       })
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => loadSavedMovies());
   }
 
   const handleDelet = (card) => {
@@ -170,12 +172,11 @@ function App() {
   const deletMovie = ({ _id }) => {
     api.deletMovie(_id)
       .then(() => {
-        console.log('фильм удалён');
+        setSavedMovies((state) => state.filter((item) => item._id !== _id))
       })
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => loadSavedMovies());
   }
 
   const handleLike = (card) => {
@@ -215,14 +216,18 @@ function App() {
             <Movies
               loggedIn={loggedIn}
               SearchButtonMovies={SearchButtonMovies}
+              moviesTogle={moviesTogle}
+              setMoviesTogle={setMoviesTogle}
+              searchMovies={searchMovies}
+              setSearchMovies={setSearchMovies}
               success={success}
               errMessage={errMessage}
               serverErrMessage={serverErrMessage}
               isLoading={isLoading}
               savedMovies={savedMovies}
-              loadSavedMovies={loadSavedMovies}
               quantity={quantity}
               foundMovies={foundMovies}
+              allMovies={allMovies}
               handleButtonMore={handleButtonMore}
               handleLike={handleLike} />
           </ProtectedRoute>
@@ -233,10 +238,14 @@ function App() {
               success={success}
               errMessage={errMessage}
               isLoading={isLoading}
+              savedMoviesTogle={savedMoviesTogle}
+              setSavedMoviesTogle={setSavedMoviesTogle}
+              searchSavedMovies={searchSavedMovies}
+              setSearchSavedMovies={setSearchSavedMovies}
               savedMovies={savedMovies}
-              loadSavedMovies={loadSavedMovies}
               setSavedFoundMovies={setSavedFoundMovies}
               savedFoundMovies={savedFoundMovies}
+              allMovies={allMovies}
               handleDelet={handleDelet} />
           </ProtectedRoute>
           <ProtectedRoute loggedIn={loggedIn} path={'/profile'}>

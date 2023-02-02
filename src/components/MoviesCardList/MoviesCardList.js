@@ -4,15 +4,17 @@ import React from 'react';
 export default function MoviesCardList(props) {
 
   const mesage = props?.serverErrMesage && props?.success ? props?.serverErrMesage : 'Ничего не найдено';
+  const classNameNotFound = props.allMovies.length !== 0 ? 'movies-list__not-foind movies-list__not-foind_active' : 'movies-list__not-foind';
 
   React.useEffect(() => {
     localStorage.setItem('foundMovies', JSON.stringify(props.foundMovies));
+    localStorage.setItem('moviesTogle', JSON.stringify(props.moviesTogle));
   }, [props.foundMovies]);
 
   return (
     <>
       {(props.foundMovies.length === 0) ? (
-        <h2 className='movies-list__not-foind'>{mesage}</h2>
+        <h2 className={classNameNotFound}>{mesage}</h2>
       ) : (
         <ul className='movies-list'>
           {

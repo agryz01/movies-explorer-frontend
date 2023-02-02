@@ -12,16 +12,16 @@ export default function SavedMovies({
   success,
   errMessage,
   isLoading,
-  loadSavedMovies,
   savedFoundMovies,
   setSavedFoundMovies,
   savedMovies,
-  handleDelet
+  savedMoviesTogle,
+  setSavedMoviesTogle,
+  searchSavedMovies,
+  setSearchSavedMovies,
+  handleDelet,
+  allMovies
 }) {
-
-  React.useEffect(() => {
-    setSavedFoundMovies(savedMovies);
-  }, [savedMovies]);
 
   return (
     <>
@@ -29,12 +29,18 @@ export default function SavedMovies({
       <main className='saved-movies'>
         <SearchForm
           SearchButton={SearchButtonSavedMovies}
+          togle={savedMoviesTogle}
+          setTogle={setSavedMoviesTogle}
+          searchMovies={searchSavedMovies}
+          setSearchMovies={setSearchSavedMovies}
           success={success}
           errMessage={errMessage} />
         <Preloader isLoading={isLoading} />
         <SavedMoviesCardList
-          loadSavedMovies={loadSavedMovies}
+          allMovies={allMovies}
           savedFoundMovies={savedFoundMovies}
+          setSavedFoundMovies={setSavedFoundMovies}
+          savedMovies={savedMovies}
           handleDelet={handleDelet} />
       </main>
       <Footer />

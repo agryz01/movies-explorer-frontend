@@ -15,6 +15,11 @@
   font-size: 28px;
   line-height: 1.21;
   color: rgba(139, 139, 139, 1);
+  display: none;
+}
+
+.movies-list__not-foind_active {
+  display: block;
 }
 
 @media (max-width: 800px) {

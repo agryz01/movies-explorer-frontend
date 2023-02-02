@@ -11,17 +11,19 @@ export default function Movies({
   loggedIn,
   isLoading,
   savedMovies,
-  loadSavedMovies,
   quantity,
   foundMovies,
+  allMovies,
   handleButtonMore,
   success,
   errMessage,
   serverErrMessage,
+  moviesTogle,
+  setMoviesTogle,
+  searchMovies,
+  setSearchMovies,
   handleLike
 }) {
-
-  React.useEffect(() => loadSavedMovies(), []);
 
   const classNameButton = foundMovies.length >= quantity ? ((foundMovies.length <= quantity) ? 'movies-list__more' : 'movies-list__more movies-list__more_active') : 'movies-list__more';
   const classNameCardsList = isLoading ? 'movies__cardsList' : 'movies__cardsList_active';
@@ -32,16 +34,21 @@ export default function Movies({
       <main className='movies'>
         <SearchForm
           SearchButton={SearchButtonMovies}
+          togle={moviesTogle}
+          setTogle={setMoviesTogle}
+          searchMovies={searchMovies}
+          setSearchMovies={setSearchMovies}
           success={success}
           errMessage={errMessage} />
         <Preloader isLoading={isLoading} />
         <section className={classNameCardsList}>
           <MoviesCardList
             serverErrMessage={serverErrMessage}
+            moviesTogle={moviesTogle}
             success={success}
             savedMovies={savedMovies}
-            loadSavedMovies={loadSavedMovies}
             quantity={quantity}
+            allMovies={allMovies}
             foundMovies={foundMovies}
             handleLike={handleLike} />
           <button onClick={handleButtonMore} className={classNameButton}>Ещё</button>

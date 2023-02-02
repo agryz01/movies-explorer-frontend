@@ -3,10 +3,16 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 
 export default function SavedMoviesCardList(props) {
 
+  const classNameNotFound = props.allMovies.length !== 0 ? 'movies-list__not-foind movies-list__not-foind_active' : 'movies-list__not-foind';
+
+  React.useEffect(() => {
+    props.setSavedFoundMovies(props.savedMovies);
+  }, [props.savedMovies]);
+
   return (
     <>
       {(props.savedFoundMovies.length === 0) ? (
-        <h2 className='movies-list__not-foind'>Ничего не найдено</h2>
+        <h2 className={classNameNotFound}>Ничего не найдено</h2>
       ) : (
         <ul className='movies-list'>
           {

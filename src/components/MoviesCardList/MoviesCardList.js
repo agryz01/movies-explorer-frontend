@@ -3,7 +3,7 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 import React from 'react';
 export default function MoviesCardList(props) {
 
-  const mesage = props?.serverErrMesage && props?.success ? props?.serverErrMesage : 'Ничего не найдено';
+  const mesage = props?.serverMessage && props?.success ? props?.serverMessage : 'Ничего не найдено';
   const classNameNotFound = props.allMovies.length !== 0 ? 'movies-list__not-foind movies-list__not-foind_active' : 'movies-list__not-foind';
 
   React.useEffect(() => {

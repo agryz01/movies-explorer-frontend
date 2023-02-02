@@ -9,7 +9,7 @@ export default function Register(props) {
 
   const { register, handleSubmit, formState: { errors, isValid } } = useForm({ mode: "onChange" });
 
-  React.useEffect(() => props.setServerErrMessage(null), []);
+  React.useEffect(() => props.setServerMessage(null), []);
 
   const onSubmit = (data) => {
     props.handleRegistering(data);
@@ -27,7 +27,7 @@ export default function Register(props) {
         toLink={'/signin'}
         link={'Войти'}
         onSubmit={handleSubmit(onSubmit)}
-        serverErrMessage={props.serverErrMessage}
+        serverMessage={props.serverMessage}
         disabled={isValid ? '' : 'disabled'}>
         <label className='form__field'>
           <span className='form__input-name'>Имя</span>

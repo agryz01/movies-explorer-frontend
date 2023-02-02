@@ -27,7 +27,7 @@ function App() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
   const [errMessage, setErrMessage] = React.useState(null);
-  const [serverErrMessage, setServerErrMessage] = React.useState(null);
+  const [serverMessage, setServerMessage] = React.useState(null);
   const [editProfile, setEditProfile] = React.useState(false);
   const [moviesTogle, setMoviesTogle] = React.useState(localStorage?.moviesTogle ? JSON.parse(localStorage?.moviesTogle) : false);
   const [savedMoviesTogle, setSavedMoviesTogle] = React.useState(false);
@@ -60,11 +60,11 @@ function App() {
     api.setUser(name, email, password)
       .then(() => {
         handleLogin({ password, email });
-        setServerErrMessage(null);
+        setServerMessage(null);
       })
       .catch((err) => {
         console.log(err);
-        setServerErrMessage(err.message);
+        setServerMessage(err.message);
       })
   }
 
@@ -72,27 +72,25 @@ function App() {
     api.authUser(email, password)
       .then(() => {
         setLoggedIn(true);
-        setServerErrMessage(null);
+        setServerMessage(null);
         history.push('/movies');
       })
       .catch((err) => {
         console.log(err);
-        setServerErrMessage(err.message);
+        setServerMessage(err.message);
       })
   }
 
   const handleUpdateUser = ({ email, name }) => {
-    console.log('запрос к серверу');
     api.setUserInformation(email, name)
       .then((res) => {
         setCurrentUser(res);
-        console.log('данные изменены');
         setEditProfile(!editProfile);
-        setServerErrMessage('изменения успешно сохранены');
+        setServerMessage('изменения успешно сохранены');
       })
       .catch((err) => {
         console.log(err);
-        setServerErrMessage(err.message);
+        setServerMessage(err.message);
       })
   }
 
@@ -124,18 +122,16 @@ function App() {
           setFoundMovies(searshMovies(res, searchForm, togle));
           setAllMovies(res);
           setQuantity(startQuantity);
-          console.log('с запросом');
         })
         .catch((err) => {
           console.log(err);
           setSuccess(false);
-          setServerErrMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
+          setServerMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
         })
         .finally(() => {
           setIsLoading(false);
         })
     } else {
-      console.log('без зщапроса');
       setFoundMovies(searshMovies(allMovies, searchForm, togle));
       setQuantity(startQuantity);
       setIsLoading(false);
@@ -222,7 +218,7 @@ function App() {
               setSearchMovies={setSearchMovies}
               success={success}
               errMessage={errMessage}
-              serverErrMessage={serverErrMessage}
+              serverMessage={serverMessage}
               isLoading={isLoading}
               savedMovies={savedMovies}
               quantity={quantity}
@@ -252,8 +248,8 @@ function App() {
             <Profile
               loggedIn={loggedIn}
               handleUpdateUser={handleUpdateUser}
-              serverErrMessage={serverErrMessage}
-              setServerErrMessage={setServerErrMessage}
+              serverMessage={serverMessage}
+              setServerMessage={setServerMessage}
               editProfile={editProfile}
               setEditProfile={setEditProfile}
               handleExit={handleExit} />
@@ -261,14 +257,14 @@ function App() {
           <ProtectedRoute loggedIn={!loggedIn} path={'/signup'}>
             <Register
               handleRegistering={handleRegistering}
-              serverErrMessage={serverErrMessage}
-              setServerErrMessage={setServerErrMessage} />
+              serverMessage={serverMessage}
+              setServerMessage={setServerMessage} />
           </ProtectedRoute>
           <ProtectedRoute loggedIn={!loggedIn} path={'/signin'}>
             <Login
               handleLogin={handleLogin}
-              serverErrMessage={serverErrMessage}
-              setServerErrMessage={setServerErrMessage} />
+              serverMessage={serverMessage}
+              setServerMessage={setServerMessage} />
           </ProtectedRoute>
           <Route path={'/*'}>
             <NotFound />

@@ -10,10 +10,9 @@ export default function Login(props) {
 
   const { register, handleSubmit, formState: { errors, isValid } } = useForm({ mode: "onChange" });
 
-  React.useEffect(() => props.setServerErrMessage(null), []);
+  React.useEffect(() => props.setServerMessage(null), []);
 
   const onSubmit = (data) => {
-    console.log(data, isValid);
     props.handleLogin(data);
   }
 
@@ -29,7 +28,7 @@ export default function Login(props) {
         toLink={'/signup'}
         link={'Регистрация'}
         onSubmit={handleSubmit(onSubmit)}
-        serverErrMessage={props.serverErrMessage}
+        serverMessage={props.serverMessage}
         disabled={isValid ? '' : 'disabled'}>
         <label className='form__field'>
           <span className='form__input-name'>E-mail</span>

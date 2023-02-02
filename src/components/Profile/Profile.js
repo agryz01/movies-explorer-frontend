@@ -21,7 +21,7 @@ export default function Profile(props) {
 
   React.useEffect(() => {
     props.setEditProfile(false);
-    props.setServerErrMessage(null);
+    props.setServerMessage(null);
   }, [])
 
   const togleButton = () => props.setEditProfile(!props.editProfile);
@@ -63,7 +63,7 @@ export default function Profile(props) {
           </label>
         </div>
         <div className='profile__conteiner'>
-          <span className='form__error-server'>{props.serverErrMessage}</span>
+          <span className='form__error-server'>{props.serverMessage}</span>
           <button type='submit' disabled={
             isValid ? (watch('name') === currentUser.name && watch('email') === currentUser.email ? 'disabled' : '') : 'disabled'
           }

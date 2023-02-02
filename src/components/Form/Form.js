@@ -11,7 +11,7 @@ export default function Form(props) {
         {props.children}
       </div>
       <div className="form__conteiner">
-        <span className='form__error-server'>{props.serverErrMessage}</span>
+        <span className='form__error-server'>{props.serverMessage}</span>
         <button type='submit' disabled={props.disabled} className={classNameButton}>{props.button}</button>
         <span className='form__subtitle'>
           {props.subtitle}

@@ -17,7 +17,7 @@ export default function Movies({
   handleButtonMore,
   success,
   errMessage,
-  serverErrMessage,
+  serverMessage,
   moviesTogle,
   setMoviesTogle,
   searchMovies,
@@ -43,7 +43,7 @@ export default function Movies({
         <Preloader isLoading={isLoading} />
         <section className={classNameCardsList}>
           <MoviesCardList
-            serverErrMessage={serverErrMessage}
+            serverMessage={serverMessage}
             moviesTogle={moviesTogle}
             success={success}
             savedMovies={savedMovies}

@@ -11,12 +11,12 @@ export default function SavedMoviesCardList(props) {
 
   return (
     <>
-      {(props.savedFoundMovies.length === 0) ? (
+      {(props.movies.length === 0) ? (
         <h2 className={classNameNotFound}>Ничего не найдено</h2>
       ) : (
         <ul className='movies-list'>
           {
-            props.savedFoundMovies.map((item) => {
+            props.movies.map((item) => {
               return (
                 <MoviesCard
                   className={'movies-card__del'}

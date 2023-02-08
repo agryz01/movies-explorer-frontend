@@ -9,16 +9,17 @@ export default function MoviesCardList(props) {
   React.useEffect(() => {
     localStorage.setItem('foundMovies', JSON.stringify(props.foundMovies));
     localStorage.setItem('moviesTogle', JSON.stringify(props.moviesTogle));
-  }, [props.foundMovies]);
+    localStorage.setItem('searchMoviesValue', props.searchMovies);
+  }, [props.foundMovies, props.moviesTogle]);
 
   return (
     <>
-      {(props.foundMovies.length === 0) ? (
+      {(props.movies.length === 0) ? (
         <h2 className={classNameNotFound}>{mesage}</h2>
       ) : (
         <ul className='movies-list'>
           {
-            props.foundMovies.slice(0, props.quantity).map((item) => {
+            props.movies.slice(0, props.quantity).map((item) => {
               const isSaved = props.savedMovies.some((saveMovie) => saveMovie.movieId === item.id);
               return (
                 <MoviesCard

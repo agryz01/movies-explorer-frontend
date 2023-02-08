@@ -25,7 +25,8 @@ export default function Movies({
   handleLike
 }) {
 
-  const classNameButton = foundMovies.length >= quantity ? ((foundMovies.length <= quantity) ? 'movies-list__more' : 'movies-list__more movies-list__more_active') : 'movies-list__more';
+  const movies = moviesTogle ? foundMovies.filter((item) => item.duration <= 40) : foundMovies;
+  const classNameButton = movies.length >= quantity ? ((movies.length <= quantity) ? 'movies-list__more' : 'movies-list__more movies-list__more_active') : 'movies-list__more';
   const classNameCardsList = isLoading ? 'movies__cardsList' : 'movies__cardsList_active';
 
   return (
@@ -43,7 +44,9 @@ export default function Movies({
         <Preloader isLoading={isLoading} />
         <section className={classNameCardsList}>
           <MoviesCardList
+            movies={movies}
             serverMessage={serverMessage}
+            searchMovies={searchMovies}
             moviesTogle={moviesTogle}
             success={success}
             savedMovies={savedMovies}

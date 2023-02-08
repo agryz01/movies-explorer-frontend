@@ -99,6 +99,7 @@ export default class MainApi {
 
   export const api = new MainApi({
     url: 'https://api.agryz-movies-explorer.nomoredomains.club/',
+    // url: 'http://localhost:3000/',
     headers: {
       'Content-Type': 'application/json; charset=UTF-8'
     },

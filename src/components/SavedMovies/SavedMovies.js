@@ -23,6 +23,8 @@ export default function SavedMovies({
   allMovies
 }) {
 
+  const movies = savedMoviesTogle ? savedFoundMovies.filter((item) => item.duration <= 40) : savedFoundMovies;
+
   return (
     <>
       <Header loggedIn={loggedIn} />
@@ -38,7 +40,7 @@ export default function SavedMovies({
         <Preloader isLoading={isLoading} />
         <SavedMoviesCardList
           allMovies={allMovies}
-          savedFoundMovies={savedFoundMovies}
+          movies={movies}
           setSavedFoundMovies={setSavedFoundMovies}
           savedMovies={savedMovies}
           handleDelet={handleDelet} />

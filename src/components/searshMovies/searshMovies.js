@@ -1,13 +1,17 @@
-export default function searshMovies(arr, key, togle) {
+// export default function searshMovies(arr, key, togle) {
 
-  const keyMovies = (arr, key) => arr.filter((item) => {
-    return (item.nameRU + item.nameEN).toLowerCase().includes(key.toLowerCase());
-  });
-  if (togle) {
-    return keyMovies(arr, key).filter((item) => {
-      return item.duration <= 40;
-    });
-  } else {
-    return keyMovies(arr, key);
-  }
+//   const keyMovies = (arr, key) => arr.filter((item) => {
+//     return (item.nameRU + item.nameEN).toLowerCase().includes(key.toLowerCase());
+//   });
+//   if (togle) {
+//     return keyMovies(arr, key).filter((item) => {
+//       return item.duration <= 40;
+//     });
+//   } else {
+//     return keyMovies(arr, key);
+//   }
+// }
+export default function searshMovies(arr, key) {
+  console.log(arr, key);
+  return arr.filter((item) => (item.nameRU + item.nameEN).toLowerCase().includes(key.toLowerCase()));
 }

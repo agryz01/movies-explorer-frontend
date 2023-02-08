@@ -21,15 +21,12 @@ export default function SearchForm({
   }
 
   const handleClick = (e) => {
-    // console.log(isValid, searchMovies);
     e.preventDefault();
-    SearchButton(searchMovies, isValid, togle);
-    localStorage.setItem('searchMoviesValue', searchMovies);
+    SearchButton(searchMovies, isValid);
   }
 
   const onClickTogle = () => {
     setTogle(!togle);
-    SearchButton(searchMovies, isValid, !togle);
   }
 
   return (

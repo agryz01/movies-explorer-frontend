@@ -108,37 +108,7 @@ function App() {
     history.push('/');
   }
 
-  // const SearchButtonMovies = (searchForm, isValid, togle) => {
-  //   if (!isValid) {
-  //     setSuccess(false);
-  //     setErrMessage('Нужно ввести ключевое слово');
-  //     return;
-  //   }
-  //   setIsLoading(true);
-  //   if (allMovies.length === 0) {
-  //     getMoviesApi()
-  //       .then((res) => {
-  //         setSuccess(true);
-  //         setFoundMovies(searshMovies(res, searchForm, togle));
-  //         setAllMovies(res);
-  //         setQuantity(startQuantity);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //         setSuccess(false);
-  //         setServerMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
-  //       })
-  //       .finally(() => {
-  //         setIsLoading(false);
-  //       })
-  //   } else {
-  //     setFoundMovies(searshMovies(allMovies, searchForm, togle));
-  //     setQuantity(startQuantity);
-  //     setIsLoading(false);
-  //   }
-  // }
   const SearchButtonMovies = (searchForm, isValid) => {
-    // console.log(isValid, searchMovies);
     if (!isValid) {
       setSuccess(false);
       setErrMessage('Нужно ввести ключевое слово');

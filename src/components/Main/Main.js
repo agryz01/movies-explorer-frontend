@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import './Main.css';
 import Header from "../Header/Header"
 import Promo from "../Promo/Promo";
@@ -9,18 +8,11 @@ import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
 
-export default function Main() {
+export default function Main(props) {
   return (
     <>
       <Header
-        className={'header'}>
-        <nav className='header__link-conteiner'>
-          <Link to={'/signup'} className='header__link' >Регистрация</Link>
-          <Link to={'/signin'} className='header__link'>
-            <button className='header__link-button'>Войти</button>
-          </Link>
-        </nav>
-      </Header>
+        loggedIn={props.loggedIn} />
       <main className="content">
         <Promo />
         <NavTab />

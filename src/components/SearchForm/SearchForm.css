@@ -2,6 +2,7 @@
   display: flex;
   position: relative;
   padding-bottom: 15px;
+  position: relative;
 }
 
 .search-form::after {
@@ -34,6 +35,23 @@
   border: none;
   color: rgba(139, 139, 139, 1);
   flex-grow: 1;
+}
+
+.search-form__error {
+  display: none;
+  position: absolute;
+  left: calc(50% - 92px);
+  bottom: -20px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.21;
+  color: rgba(139, 139, 139, 1);
+  z-index: 2;
+}
+
+.search-form__error_active {
+  display: block;
 }
 
 .search-form__button {

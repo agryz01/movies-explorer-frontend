@@ -8,33 +8,40 @@
   overflow: hidden;
 }
 
-.filter__invisible-checkbox {
-  position: absolute;
-  width: 1px;
-  clip-path: inset(0 0 0 0);
-}
-
-.filter__invisible-checkbox:checked+.filter__visible-checkbox {
-  background-image: url(../../images/smalltumb.svg);
-  transition: .3s;
-}
-
-.filter__visible-checkbox {
-  background-image: url(../../images/smalltumboff.svg);
-  display: block;
+.filter__togle {
   width: 36px;
   height: 20px;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-color: rgba(255, 255, 255, 0);
-  flex-shrink: 0;
+  background-color: rgba(52, 52, 52, 1);
+  border-radius: 10px;
+  position: relative;
   cursor: pointer;
-  border-style: none;
   transition: .3s;
 }
 
-.filter__visible-checkbox:hover {
+.filter__togle:hover {
   opacity: .8;
+}
+
+.filter__togle_active {
+  background-color: rgba(43, 224, 128, 1);
+  transition: .3s;
+}
+
+.filter__togle-ring {
+  width: 8px;
+  height: 8px;
+  background-color: rgba(160, 160, 160, 1);
+  border-radius: 50%;
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  transition: .3s;
+}
+
+.filter__togle-ring_active {
+  transform: translateX(16px);
+  transition: .3s;
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .filter__text-checkbox {

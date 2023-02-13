@@ -1,10 +1,13 @@
 .profile {
+  height: calc(100vh - 74px);
+  width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 0;
   align-items: center;
-  max-width: 410px;
-  padding: 74px calc(50% - 205px);
+  padding: 74px calc(50% - 205px) 70px;
+  box-sizing: border-box;
+  justify-content: space-between;
 }
 
 .profile__title {
@@ -13,9 +16,19 @@
   line-height: 1.21;
   margin: 0;
   padding-bottom: 123px;
+  text-align: center;
 }
 
 .profile__conteiner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.profile__input-conteiner {
+  position: relative;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -38,12 +51,73 @@
   text-align: right;
 }
 
+.profile__error {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: rgba(238, 52, 101, 1);
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.2;
+  min-height: 12px;
+  visibility: inherit;
+}
+
+.profile__error_active {
+  position: absolute;
+  visibility: visible;
+}
+
 .underline {
   border-bottom: 1px solid rgba(66, 66, 66, 1);
 }
 
+.profile__button {
+  width: 100%;
+  height: 45px;
+  background-color: rgba(66, 133, 244, 1);
+  border-radius: 3px;
+  border: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+  display: none;
+}
+
+.profile__button:hover {
+  opacity: .8;
+}
+
+.profile__button_disabled {
+  background-color: rgba(248, 248, 248, 1);
+  color: rgba(194, 194, 194, 1);
+}
+
+.profile__button_disabled:hover {
+  opacity: 1;
+  cursor: inherit;
+}
+
+.profile__button_visible {
+  display: inline;
+}
+
+.profile__conteiner-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  display: none;
+}
+
+.profile__conteiner-bottom_visible {
+  display: flex;
+}
+
 .profile__edit {
-  padding-top: 220px;
   font-weight: 400;
   font-size: 13px;
   line-height: 1.23;
@@ -69,22 +143,22 @@
 }
 
 @media (max-width: 800px) {
-  .profile {
+  /* .profile {
     padding-top: 236px;
-  }
+  } */
 
   .profile__title {
     padding-bottom: 96px;
   }
 
-  .profile__edit {
+  /* .profile__edit {
     padding-top: 210px;
-  }
+  } */
 }
 
 @media (max-width: 620px) {
   .profile {
-    padding: 70px calc(33.26% - 76.43px) 0;
+    padding: 74px calc(33.26% - 76.43px) 40px;
   }
 
   .profile__title {
@@ -92,7 +166,7 @@
   }
 
   .profile__edit {
-    padding-top: 379px;
+    /* padding-top: 379px; */
     font-size: 12px;
     line-height: 1.25;
   }

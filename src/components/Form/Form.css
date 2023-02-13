@@ -1,9 +1,13 @@
 .form {
   display: flex;
   flex-direction: column;
-  height: 482px;
+  height: 520px;
   box-sizing: border-box;
   justify-content: space-between;
+}
+
+.form__conteiner {
+  position: relative;
 }
 
 .form__title {
@@ -38,21 +42,32 @@
   height: 46px;
   border-radius: 8px;
   border: none;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   box-sizing: border-box;
   color: rgba(255, 255, 255, 1);
   padding-left: 15px;
 }
 
 .form__error {
-  position: absolute;
   left: 0;
   bottom: -2px;
   color: rgba(238, 52, 101, 1);
   font-weight: 400;
   font-size: 10px;
   line-height: 1.2;
-  visibility: hidden;
+  min-height: 12px;
+}
+
+.form__error-server {
+  position: absolute;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.18;
+  color: rgba(238, 52, 101, 1);
+  text-align: center;
+  width: 100%;
+  left: 0;
+  top: -33px;
 }
 
 .form__error_active {
@@ -60,7 +75,6 @@
 }
 
 .form__button {
-  /* margin-top: 69px; */
   width: 100%;
   height: 45px;
   background-color: rgba(66, 133, 244, 1);
@@ -75,6 +89,16 @@
 
 .form__button:hover {
   opacity: .8;
+}
+
+.form__button_disabled {
+  background-color: rgba(248, 248, 248, 1);
+  color: rgba(194, 194, 194, 1);
+}
+
+.form__button_disabled:hover {
+  opacity: 1;
+  cursor: inherit;
 }
 
 .form__subtitle {

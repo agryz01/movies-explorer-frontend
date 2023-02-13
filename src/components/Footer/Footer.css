@@ -16,10 +16,6 @@
   text-decoration: none;
 }
 
-.footer__title:hover {
-  opacity: .7;
-}
-
 .footer__title::after {
   content: "";
   position: absolute;

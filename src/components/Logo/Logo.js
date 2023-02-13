@@ -3,6 +3,8 @@ import './Logo.css';
 
 export default function Logo() {
   return (
-    <Link to={'/'} className='logo' />
+    <Link to={'/'}>
+      <div className='logo' />
+    </Link>
   )
 }

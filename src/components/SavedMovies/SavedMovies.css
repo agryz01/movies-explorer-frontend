@@ -1,9 +1,11 @@
 .saved-movies {
   padding: 70px calc(7.81% - 30px) 80px;
+  min-height: calc(100vh - 395px);
 }
 
 @media (max-width: 620px) {
   .saved-movies {
     padding: 92px calc(4.46% - 4.29px) 140px;
+    min-height: calc(100vh - 503px);
   }
 }
